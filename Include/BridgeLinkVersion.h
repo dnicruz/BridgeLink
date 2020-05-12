@@ -39,3 +39,7 @@
 // includes WBFL Version macro and
 // macros that define the minimum version of Windows and IE
 #include <WBFLVersion.h>
+
+#if defined _DEBUG || defined _BETA_VERSION
+#include <EAF\EAFTestDialogSize.h>
+#endif

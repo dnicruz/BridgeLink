@@ -38,6 +38,10 @@
 
 #include "ConfigureBridgeLinkDlg.h"
 
+#if defined _DEBUG || defined _BETA_VERSION
+#include <EAF\EAFSizeTestingDialog.h>
+#endif
+
 
 // This is the range of command IDs for all plug-in commands... all means all commands added
 // to the menus of the BridgeLink executable program, the AppPlugin document and view menus, 
@@ -83,6 +87,14 @@ END_MESSAGE_MAP()
 CBridgeLinkApp::CBridgeLinkApp()
 {
    m_CallbackID = 0;
+
+#if defined _DEBUG || defined _BETA_VERSION
+   // enable dialog size checking in debug and beta builds
+   // this will automatically alert developers of dialog boxes
+   // and property sheets exceed the maximum size per the UI design
+   CEAFSizeTestingDialog::CheckDialogSize();
+#endif
+
 }
 
 CBridgeLinkApp::~CBridgeLinkApp()
